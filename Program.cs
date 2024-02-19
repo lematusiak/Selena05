@@ -1,44 +1,47 @@
-﻿var name = "Ewa";
-var sex = "kobieta";
-var age = 30;
+﻿// TABLICE
 
-if (sex == "kobieta" && age < 30)
+using System.Security.Cryptography;
+
+// PIERWSZY SPOSÓB
+
+int[] grades = new int[365];
+string[] dayOfWeek = new string[7];
+dayOfWeek[0] = "monday";
+dayOfWeek[1] = "tuesday";
+dayOfWeek[2] = "wednesday";
+dayOfWeek[3] = "thursday";
+dayOfWeek[4] = "friday";
+dayOfWeek[5] = "saturday";
+dayOfWeek[6] = "sunday";
+
+// Console.WriteLine(dayOfWeek[3]);
+
+// DRUGI SPOSÓB
+
+// string[] dayOfWeek2 = { "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" };
+
+// Console.WriteLine(dayOfWeek2[0]);
+
+// i++ to to samo, co i = i + 1
+// to pętla w najczystszej postaci, wyświetlą się wszystkie dni tygodnia
+
+for (var i = 0; i < 7; i++)
 {
-    Console.WriteLine("Kobieta poniżej 30 lat");
+    Console.WriteLine(dayOfWeek[i]);
 }
-else if (name == "Ewa" && age == 30)
+
+// a w tej pętli zabezpieczamy się przed tym, gdyby ktoś w kodzie kiedys
+// wartość 7 na inną
+
+for (var i = 0; i < dayOfWeek.Length; i++)
 {
-    Console.WriteLine("Ewa, lat 30");
+    Console.WriteLine(dayOfWeek[i]);
 }
-else if (sex != "kobieta" && age < 18)
+
+// a w ostatniej pętli zwrócony zostanie monday, thursday, sunday (co trzeci dzień)
+for (var i = 0; i < dayOfWeek.Length; i= i+3)
 {
-    Console.WriteLine("Niepełnoletni mężczyżna");
-}
-else
-{
-    Console.WriteLine("Ktoś inny");
-}
-if (age == 30)
-{
-    Console.WriteLine("Trzydziestolatkowie");
+    Console.WriteLine(dayOfWeek[i]);
 }
 
 Console.ReadKey();
-
-
-// 1. WAŻNE: Jeśli chcesz sprawdzić, GDZIE JEST BŁĄD naduś View i Error List
-// Wyświetli Ci się, w któej linii jest błąd - podpowiedź AdamaŁĄD
-// 2. W powyższych: pierwsza odpowiedź fałszywa bo w założeniach jest wiek 30 lat.
-// Druga prawdziwa. Trzecia fałszywa bo w założeniach płeć jest kobietą.
-// 3. Więc: warunki muszą się zgadzać z założeniami
-// 4. Program sprawdza zawsze do pierszego prawdziwego ifa lub elsa.
-// Jeśli taki się znajdzie, dalszych prawdziwych założeń już nie rozpatruje,
-// chyba, że rozpatrzymy kolejnego ifa,
-// jak w ostatnim przypadku "Trzydziestolatkowie", co również program pokaże.
-
-// 5. Ostatni else można wypisać lub nie, zależy od nas. Estetyczny else .
-// Czyli zadanie polega na tym, niczym detektyw. Szukamy, szukamy pierwszej
-// prawdziwej odpowiedzi. Gdy ją znajdziemy zagadka rozwiązana!
-
-// 6. Ciekawostka od Zuzi: bool isWomen = true. W warunkach if, else if wystarczy
-// pisać isWomen lub !isWomen - bo jest określony jako prawdziwy
